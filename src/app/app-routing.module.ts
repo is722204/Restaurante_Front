@@ -7,6 +7,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { MiddleGuard } from './middle.guard';
 
 const routes: Routes = [
+  {path:"",component:LoginComponent},
   {path:"login",component:LoginComponent},
   {path:"platillos",component:PlatillosComponent, canActivate:[MiddleGuard]},
   {path:"cuenta",component:CartComponent,canActivate:[MiddleGuard]}

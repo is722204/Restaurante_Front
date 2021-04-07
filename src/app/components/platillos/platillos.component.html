@@ -7,7 +7,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">RESTAURANTE</a>
+  <a class="navbar-brand" routerLink="/platillos">RESTAURANTE</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -16,7 +16,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/platillos" > Platillos <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/platillos"> Platillos <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" (click)="getWaiter()">Solicitar mesero</a>
@@ -36,33 +36,20 @@
     <div class="card tarjetas">
       <img class="card-img" src={{platillo.urlImage}} alt="hi">
       <div class="card-content">
-          <h1 class="card-header">{{platillo.name}} -${{platillo.price}}-</h1>
-          <p class="card-text"> {{platillo.description}}</p>
+        <h1 class="card-header">{{platillo.name}} -${{platillo.price}}-</h1>
+        <p class="card-text"> {{platillo.description}}</p>
 
-          <a><button class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal" data-toggle="modal"
-             (click)="loadData(platillo)" >Pedir</button></a>
+        <a><button class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal"
+            data-toggle="modal" (click)="loadData(platillo)">Pedir</button></a>
       </div>
     </div>
 
   </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header center">
@@ -75,11 +62,11 @@
         {{platilloSelected.description}}
       </div>
       <div class="modal-footer center">
-        <button  (click)="resta()">-</button>
+        <button (click)="resta()">-</button>
         <p id="cantidad">{{platilloSelected.amount}}</p>
         <button (click)="suma()">+</button>
       </div>
-      
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" (click)="sendPedido()">Save changes</button>
@@ -87,5 +74,3 @@
     </div>
   </div>
 </div>
-
-      

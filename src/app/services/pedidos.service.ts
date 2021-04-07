@@ -13,14 +13,7 @@ export class PedidosService {
   table=''
   password=''
 
-  createNotification(notification) {
-    console.log(notification)
-    return this.http.post("http://localhost:3000/notification", { responseType: 'text' }, {
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8'
-      }
-    })
-  }
+  
 
   createPedido(platilloSelected){
     return this.http.post(this.URI+"/pedido",platilloSelected);
@@ -38,5 +31,5 @@ export class PedidosService {
     return this.http.get(this.URI+"/verify/"+id+"/"+mesa,{responseType: 'text'})
   }
 
- 
+  
 }

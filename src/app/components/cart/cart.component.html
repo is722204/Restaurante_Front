@@ -1,59 +1,61 @@
 <div class="card">
-    <div class="card-body text-center naranja">
-      <h4 class="card-title">A la carta Tlaquepaque</h4>
-      <p class="card-text">Ordena tus platillos desde aquí</p>
-    </div>
+  <div class="card-body text-center naranja">
+    <h4 class="card-title">A la carta Tlaquepaque</h4>
+    <p class="card-text">Ordena tus platillos desde aquí</p>
   </div>
-  
-  
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">RESTAURANTE</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/platillos"> Platillos <span class="sr-only">(current)</span></a>
+</div>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="/platillos">RESTAURANTE</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/platillos"> Platillos <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="getWaiter()">Solicitar mesero</a>
+      </li>
+
+    </ul>
+    <h5 type="button" class="button white center" routerLink="/cuenta"> <i class="bi bi-cart-check"></i> Artículos
+      pedidos</h5>
+  </div>
+</nav>
+
+
+<div id="cuenta">
+  <div class="grid-item">
+    <h2 class="white center"><i class="bi bi-cart-check"></i> Artículos pedidos</h2>
+    <div class="card tarjetas">
+      <h2 class="center" id="idMesa"></h2>
+      <ul id="ordenados" *ngFor="let pedido of pedidos">
+        <li>
+          <h4>{{pedido.cantidad}} {{pedido.platillo}}</h4>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" (click)="getWaiter()">Solicitar mesero</a>
-        </li>
-  
+
       </ul>
-      <h5 type="button" class="button white center" routerLink="/cuenta"> <i class="bi bi-cart-check"></i> Artículos
-        pedidos</h5>
     </div>
-  </nav>
 
+    <div class="card tarjetas">
+      <div class="center">
+        <h2>-Total-</h2>
+      </div>
 
-  <div id="cuenta">
-    <div class="grid-item">
-   <h2 class="white center"><i class="bi bi-cart-check"></i> Artículos pedidos</h2>
-   <div class="card tarjetas">
-     <h2 class="center" id="idMesa"></h2>
-     <ul id="ordenados" *ngFor="let pedido of pedidos">
-        <li><h4>{{pedido.cantidad}} {{pedido.platillo}}</h4> </li>
-       
-     </ul>
-   </div>
-
-   <div class="card tarjetas">
-    <div class="center">
-      <h2 >-Total-</h2>
+      <div class=" center">
+        <h2 id="total">${{total}}</h2>
+      </div>
     </div>
-    
-    <div class=" center">
-      <h2 id="total">${{total}}</h2>
+
+
+    <div class="center ">
+      <button class="btn btn-primary" (click)="pay()">Pagar cuenta</button>
     </div>
-  </div>
-
-
-  <div class="center ">
-    <button class="btn btn-primary" (click)="pay()">Pagar cuenta</button>
-  </div>
 
   </div>
 </div>

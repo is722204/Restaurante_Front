@@ -1,5 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { PedidosService } from 'src/app/services/pedidos.service';
+import { PlatillosService } from 'src/app/services/platillos.service';
 
 @Component({
   selector: 'app-cart',
@@ -10,7 +11,7 @@ export class CartComponent implements OnInit {
   total=0
   @Input() mesa:String;
   pedidos=<any>[];
-  constructor(private pedidoService: PedidosService) { }
+  constructor(private pedidoService: PedidosService, private platilloService: PlatillosService) { }
 //Cambiar por la mesa dinámica
   ngOnInit(): void {
     this.pedidoService.getPedidos(this.pedidoService.table)
@@ -34,12 +35,19 @@ export class CartComponent implements OnInit {
     
   }
   pay(){
+    let noti={mesa:this.pedidoService.table,tipo:"Solicitud de cuenta"}
+    this.platilloService.notif(noti).subscribe(
+      res=>console.log(res),
+      err=>console.log(err)
+    )
     alert("En un momento llegará un mesero a cobrar")
-    this.pedidoService.createNotification({mesa:this.pedidoService.table,tipo:"Solicitud de Cuenta"})
-
   }
   getWaiter(){
-    this.pedidoService.createNotification({mesa:this.pedidoService.table,tipo:"Solicitud de mesero"})
+    let noti={mesa:this.pedidoService.table,tipo:"Solicitud de mesero"}
+    this.platilloService.notif(noti).subscribe(
+      res=>console.log(res),
+      err=>console.log(err)
+    )
     alert("En un momento llega tu mesero")
 
   }

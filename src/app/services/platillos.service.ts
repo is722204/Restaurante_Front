@@ -15,5 +15,8 @@ export class PlatillosService {
   getPlatillos(){
     return this.http.get<Platillo[]>(this.URI);
   }
+  notif(notification) {
+    return this.http.post("http://localhost:3000/notification",notification)
+  }
 
 }

@@ -35,7 +35,12 @@ export class PlatillosComponent implements OnInit {
     this.platilloSelected.table=this.pedidoService.table
   }
   getWaiter(){
-    this.pedidoService.createNotification({mesa:this.pedidoService.table,tipo:"Solicitud de mesero"})
+    this.platilloService.notif({mesa:this.pedidoService.table,tipo:"Solicitud de mesero"}).subscribe(
+      res=>console.log(res),
+      err=>console.log(err)
+    )
+    alert("En un momento llegará un mesero a su mesa")
+
   }
   //Suma y resta del modal
   suma(){
