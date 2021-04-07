@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PedidosService } from 'src/app/services/pedidos.service';
 import {PlatillosService} from '../../services/platillos.service'
 
@@ -8,7 +9,7 @@ import {PlatillosService} from '../../services/platillos.service'
   styleUrls: ['./platillos.component.less']
 })
 export class PlatillosComponent implements OnInit {
-
+  
   platillos=[];
   platilloSelected={
     price:null,
@@ -17,7 +18,7 @@ export class PlatillosComponent implements OnInit {
     amount:0,
     table:null
   }
-  constructor(private platilloService: PlatillosService,private pedidoService: PedidosService) { }
+  constructor(private router: Router,private platilloService: PlatillosService,private pedidoService: PedidosService) { }
 
   ngOnInit(): void {
     this.platilloService.getPlatillos()
@@ -40,7 +41,6 @@ export class PlatillosComponent implements OnInit {
       err=>console.log(err)
     )
     alert("En un momento llegará un mesero a su mesa")
-
   }
   //Suma y resta del modal
   suma(){
@@ -61,7 +61,8 @@ export class PlatillosComponent implements OnInit {
       res=>console.log(res),
       err=>console.log(err)
     )
-  }
+    
 
+  }
   
 }
