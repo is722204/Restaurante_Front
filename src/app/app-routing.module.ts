@@ -4,11 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 import {LoginComponent} from '../app/components/login/login.component'
 import {PlatillosComponent} from '../app/components/platillos/platillos.component'
 import { CartComponent } from './components/cart/cart.component';
+import { MiddleGuard } from './middle.guard';
 
 const routes: Routes = [
   {path:"login",component:LoginComponent},
-  {path:"platillos",component:PlatillosComponent},
-  {path:"cuenta",component:CartComponent}
+  {path:"platillos",component:PlatillosComponent, canActivate:[MiddleGuard]},
+  {path:"cuenta",component:CartComponent,canActivate:[MiddleGuard]}
   
 ];
 

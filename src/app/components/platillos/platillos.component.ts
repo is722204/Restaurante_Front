@@ -32,7 +32,10 @@ export class PlatillosComponent implements OnInit {
     this.platilloSelected.description=plato.description
     this.platilloSelected.price=plato.price  
     this.platilloSelected.amount=0 
-    this.platilloSelected.table="mesa_10" 
+    this.platilloSelected.table=this.pedidoService.table
+  }
+  getWaiter(){
+    this.pedidoService.createNotification({mesa:this.pedidoService.table,tipo:"Solicitud de mesero"})
   }
   //Suma y resta del modal
   suma(){
@@ -55,7 +58,5 @@ export class PlatillosComponent implements OnInit {
     )
   }
 
-  getWaiter(){
-    alert("En un momento llega tu mesero")
-  }
+  
 }

@@ -7,7 +7,7 @@ import {Platillo}from '../interfaces/Platillo'
 })
 export class PlatillosService {
 
-  URI='Http://localhost:3000/menu'
+  URI='Http://localhost:3000/menu/'
 
   constructor(private http: HttpClient) { }
 
