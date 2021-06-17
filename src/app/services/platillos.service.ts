@@ -7,7 +7,7 @@ import {Platillo}from '../interfaces/Platillo'
 })
 export class PlatillosService {
 
-  URI='Http://localhost:3000/menu/'
+  URI='/menu/'
 
   constructor(private http: HttpClient) { }
 
@@ -16,7 +16,7 @@ export class PlatillosService {
     return this.http.get<Platillo[]>(this.URI);
   }
   notif(notification) {
-    return this.http.post("http://localhost:3000/notification",notification)
+    return this.http.post("/notification",notification)
   }
 
 }

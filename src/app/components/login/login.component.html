@@ -1,15 +1,16 @@
+<body>
     <div class="container" id="login">
         <div class="row justify-content-center pt-5 mt-5">
             <div class="col-md-4 formulario">
-                <form (submit)="validate(mesa,id)">
+                <form (submit)="validate(mesa,id)" autocomplete="off">
                     <div class="form-groud text-center ">
                         <h1 class="text-light">Registro</h1>
                     </div>
                     <div class="form-group  mx-sm-4">
-                        <input type="text" #mesa class="form-control" id="mesa" placeholder="número de mesa">
+                        <input type="number" #mesa class="form-control" id="mesa" placeholder="número de mesa">
                     </div>
                     <div class="form-group mx-sm-4">
-                        <input type="text" #id class="form-control" id="id" placeholder="contraseña">
+                        <input type="password" #id class="form-control" id="id" placeholder="contraseña">
                     </div>
                     <div class="form-group  mx-sm-4">
                         <input type="submit"  routerLinkActive="active" id="ingresar"  class="ingresar btn btn-block" value="ACEPTAR">
@@ -19,3 +20,5 @@
             </div>
         </div>
     </div>
+</body>
+ 

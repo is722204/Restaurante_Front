@@ -15,15 +15,12 @@ export class LoginComponent implements OnInit {
   }
 
   validate(mesa,id) {
-    console.log("mesa: "+ mesa.value)
-    console.log("id: "+ id.value)
-    
-    this.pedidoService.getVerify(mesa.value,id.value).subscribe(
+    this.pedidoService.getVerify("mesa_"+mesa.value,id.value).subscribe(
       res=>{
-        this.pedidoService.table=mesa.value
-        //localStorage.setItem("Mesa",mesa.value)
+        this.pedidoService.table="mesa_"+mesa.value
         this.pedidoService.password=id.value
-        //localStorage.setItem("Password",id.value)
+        localStorage.setItem("Password",id.value)
+        localStorage.setItem("Mesa","mesa_"+mesa.value)
         if(res=="pasa"){
           this.router.navigate(["/platillos"])
         }

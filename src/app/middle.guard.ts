@@ -14,8 +14,8 @@ export class MiddleGuard implements CanActivate {
 
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
-    let mesa = this.check.table
-    let pass = this.check.password
+    let mesa = this.check.table || localStorage.getItem("Mesa")
+    let pass = this.check.password || localStorage.getItem("Password")
     return this.check.getActive(mesa, pass).pipe(
       map((data: any) => {
         if (data == "true") {

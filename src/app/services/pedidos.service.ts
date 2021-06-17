@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class PedidosService {
 
-  URI='Http://localhost:3000/menu'
+  URI='/menu'
 
   constructor(private http: HttpClient) { }
 

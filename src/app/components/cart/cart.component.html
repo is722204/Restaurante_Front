@@ -1,20 +1,15 @@
-<div class="card">
-  <div class="card-body text-center naranja">
-    <h4 class="card-title">A la carta Tlaquepaque</h4>
-    <p class="card-text">Ordena tus platillos desde aquí</p>
-  </div>
-</div>
-
+<style></style>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" routerLink="/platillos">RESTAURANTE</a>
+  <a class="navbar-brand" routerLink="/platillos"><img style="max-width: 40px;
+    padding: 5px; float:left;" >HANGAR-7</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto left">
       <li class="nav-item">
         <a class="nav-link" routerLink="/platillos"> Platillos <span class="sr-only">(current)</span></a>
       </li>
@@ -29,33 +24,76 @@
 </nav>
 
 
-<div id="cuenta">
-  <div class="grid-item">
-    <h2 class="white center"><i class="bi bi-cart-check"></i> Artículos pedidos</h2>
-    <div class="card tarjetas">
-      <h2 class="center" id="idMesa"></h2>
-      <ul id="ordenados" *ngFor="let pedido of pedidos">
-        <li>
-          <h4>{{pedido.cantidad}} {{pedido.platillo}}</h4>
-        </li>
 
-      </ul>
-    </div>
 
-    <div class="card tarjetas">
-      <div class="center">
-        <h2>-Total-</h2>
+<!--TOTAL-->
+
+<div class="container center">
+  <h2 class="center pt-2 blanco">Cuenta total</h2>
+</div>
+
+<!--FIN DE TOTAL-->
+
+
+
+
+
+
+
+<div class="container">
+  <div class="total-pay tarjetas card center">
+    <div class="row">
+      <div class="col s4">
+          <div class="content">
+              <p class="black">-Artículo-</p>
+          </div>
       </div>
-
-      <div class=" center">
-        <h2 id="total">${{total}}</h2>
+      <div class="col s4 black">
+          <div class="content-right">
+              <p>-Precio unitario-</p>
+          </div>
       </div>
+  </div>
+    <div class="row" *ngFor="let pedido of pedidos">
+        <div class="col s8">
+            <div class="content">
+                <p>{{pedido.cantidad}} {{pedido.id}}</p>
+            </div>
+        </div>
+        <div class="col s4">
+            <div class="content-right">
+                <p>${{pedido.precio}}</p>
+            </div>
+        </div>
+        
     </div>
-
-
-    <div class="center ">
-      <button class="btn btn-primary" (click)="pay()">Pagar cuenta</button>
+    
+    <div class="row" translate="no">
+        <div class="col s8" translate="no">
+            <div class="content black" translate="no">
+                <h5>Total</h5>
+            </div>
+        </div>
+        <div class="col s4" translate="no">
+            <div class="content-right black" translate="no">
+                <h5 translate="no">${{total}}</h5>
+            </div>
+        </div>
     </div>
-
+    <div class="button-link" translate="no">
+        <a class="a-naranja" style="color: black;" (click)="pay()">Pagar cuenta</a>
+    </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+

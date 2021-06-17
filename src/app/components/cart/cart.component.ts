@@ -5,7 +5,7 @@ import { PlatillosService } from 'src/app/services/platillos.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.less']
+  styleUrls: ['./cart.component.less' ]
 })
 export class CartComponent implements OnInit {
   total=0
@@ -14,7 +14,7 @@ export class CartComponent implements OnInit {
   constructor(private pedidoService: PedidosService, private platilloService: PlatillosService) { }
 //Cambiar por la mesa dinámica
   ngOnInit(): void {
-    this.pedidoService.getPedidos(this.pedidoService.table)
+    this.pedidoService.getPedidos(this.pedidoService.table || localStorage.getItem("Mesa"))
      .subscribe(
       res=>{
         this.pedidos=res
@@ -35,7 +35,7 @@ export class CartComponent implements OnInit {
     
   }
   pay(){
-    let noti={mesa:this.pedidoService.table,tipo:"Solicitud de cuenta"}
+    let noti={mesa:this.pedidoService.table || localStorage.getItem("Mesa"),tipo:"Solicitud de cuenta",password:this.pedidoService.password || localStorage.getItem("Password")}
     this.platilloService.notif(noti).subscribe(
       res=>console.log(res),
       err=>console.log(err)
@@ -43,7 +43,7 @@ export class CartComponent implements OnInit {
     alert("En un momento llegará un mesero a cobrar")
   }
   getWaiter(){
-    let noti={mesa:this.pedidoService.table,tipo:"Solicitud de mesero"}
+    let noti={mesa:this.pedidoService.table || localStorage.getItem("Mesa"),tipo:"Solicitud de mesero",password:this.pedidoService.password || localStorage.getItem("Password")}
     this.platilloService.notif(noti).subscribe(
       res=>console.log(res),
       err=>console.log(err)
